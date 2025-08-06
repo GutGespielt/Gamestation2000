@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xbox Zubehör</title>
+  <style>
+    .stars {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+    .stars input[type="radio"] {
+      display: none;
+    }
+    .stars label {
+      font-size: 2rem;
+      color: lightgray;
+      cursor: pointer;
+      user-select: none;
+    }
+    .stars input[type="radio"]:checked ~ label {
+      color: gold;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label {
+      color: gold;
+    }
+    .bewertungen {
+      margin-top: 1em;
+      border-top: 1px solid #ccc;
+      padding-top: 1em;
+    }
+    .bewertung {
+      margin-bottom: 1em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px dotted #999;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Zurück zur Startseite</a> |
+    <a href="agb.html">AGBs & Rechtliches</a>
+  </nav>
+  <h1>Xbox Zubehör</h1>
+
+  <div class="produkt">
+    <h2>Produktname</h2>
+    <p>Preis: </p>
+    <button onclick="alert('In den Warenkorb gelegt!')">In den Warenkorb</button>
+  </div>
+
+  <section>
+    <h3>Bewertung abgeben</h3>
+    <form id="bewertungForm">
+      <div class="stars">
+        <input type="radio" id="star5" name="rating" value="5" /><label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="4" /><label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="2" /><label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="1" /><label for="star1">★</label>
+      </div>
+      <textarea id="kommentar" rows="3" cols="30" placeholder="Dein Kommentar"></textarea><br />
+      <button type="submit">Bewertung abschicken</button>
+    </form>
+
+    <div class="bewertungen" id="bewertungenListe">
+      <h4>Alle Bewertungen</h4>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('bewertungForm');
+    const bewertungenListe = document.getElementById('bewertungenListe');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const rating = form.rating.value;
+      const kommentar = document.getElementById('kommentar').value.trim();
+      if (!rating) {
+        alert('Bitte eine Bewertung auswählen');
+        return;
+      }
+      const bewertungDiv = document.createElement('div');
+      bewertungDiv.classList.add('bewertung');
+      bewertungDiv.innerHTML = `<strong>${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</strong><br/>${kommentar ? kommentar : '<em>Kein Kommentar</em>'}`;
+      bewertungenListe.appendChild(bewertungDiv);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
