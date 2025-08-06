@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>PC & Laptop Zubehör</title>
+  <style>
+    .stars {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+    .stars input[type="radio"] {
+      display: none;
+    }
+    .stars label {
+      font-size: 2rem;
+      color: lightgray;
+      cursor: pointer;
+      user-select: none;
+    }
+    .stars input[type="radio"]:checked ~ label {
+      color: gold;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label {
+      color: gold;
+    }
+    .bewertungen {
+      margin-top: 1em;
+      border-top: 1px solid #ccc;
+      padding-top: 1em;
+    }
+    .bewertung {
+      margin-bottom: 1em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px dotted #999;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Zurück zur Startseite</a> |
+    <a href="agb.html">AGBs & Rechtliches</a>
+  </nav>
+  <h1>PC & Laptop Zubehör</h1>
+
+  <div class="produkt">
+    <
